@@ -26,13 +26,13 @@ public class UsersMapper extends SQLiteOpenHelper {
 	
 	private static final int DATABASE_VERSION = 3;
 	
-    private static final String PASSWORDS_TABLE_NAME = "passwords";
+    private static final String USERS_TABLE_NAME = "users";
     
     public static String getPasswordsTableName() {
-		return PASSWORDS_TABLE_NAME;
+		return USERS_TABLE_NAME;
 	}
 
-	private static final String PASSWORDS_TABLE_CREATE = "create table if not exists" +
+	private static final String USERS_TABLE_CREATE = "create table if not exists" +
     		" users ( id integer not null, " +
     		"username varchar(255), password varchar(255), primary key(id));";
     
@@ -50,7 +50,7 @@ public class UsersMapper extends SQLiteOpenHelper {
 	
 	public void createDBFirst() {
 		SQLiteDatabase sq = getWritableDatabase();
-		SQLiteStatement cs = sq.compileStatement(PASSWORDS_TABLE_CREATE);
+		SQLiteStatement cs = sq.compileStatement(USERS_TABLE_CREATE);
 		
 		cs.execute();
 		cs.close();
@@ -102,7 +102,7 @@ public class UsersMapper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 	
-		db.execSQL(PASSWORDS_TABLE_CREATE);
+		db.execSQL(USERS_TABLE_CREATE);
 		
 		// TODO Auto-generated method stub
 		
