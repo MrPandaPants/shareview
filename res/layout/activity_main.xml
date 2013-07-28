@@ -42,6 +42,7 @@
         android:layout_alignRight="@+id/editText2"
         android:layout_below="@+id/editText2"
         android:layout_marginTop="24dp"
+        android:onClick="loginUser"
         android:text="@string/activity_main_login"/>
 
     <TextView
@@ -51,6 +52,18 @@
         android:layout_above="@+id/editText2"
         android:layout_alignLeft="@+id/editText2"
         android:text="@string/activity_main_password"
+        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <TextView
+        android:id="@+id/debug"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/button1"
+        android:layout_below="@+id/button1"
+        android:layout_marginTop="22dp"
+        android:text="temp debug statements here"
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
 </RelativeLayout>

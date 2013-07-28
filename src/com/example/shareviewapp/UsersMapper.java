@@ -68,6 +68,72 @@ public class UsersMapper extends SQLiteOpenHelper {
 		
 		return 1;
 	}
+	
+	/**
+	 * Get all users inserted in the DB table
+	 * 
+	 * @return String debugString Fetch all users debug string
+	 */
+	public String debugSelectAll() {
+		
+		SQLiteDatabase sq = getReadableDatabase(); 
+		Cursor c = sq.rawQuery("select * from users;", null);
+	 
+		String debugString = "";
+		
+		c.moveToFirst();
+		while (!c.isAfterLast()) {
+			
+			try {
+				Integer i = c.getColumnCount();
+			
+				for (int indx = 0; indx < i; indx++) {
+					debugString += " | " + c.getString(indx);
+				}
+				debugString += "\n";
+				c.moveToNext();
+			} catch (IllegalStateException e) {
+				c.moveToNext();
+				
+			}
+			
+		}
+		c.close();
+		return debugString;
+	}
+	
+	/**
+	 * Debug by describing the users table
+	 * 
+	 * @return String debugString The mySQL describe equivalent of SQLite returned as String
+	 */
+	public String debugDescribe() {
+		SQLiteDatabase sq = getReadableDatabase(); 
+		Cursor c = sq.rawQuery("pragma table_info(users);", null);
+	 
+		String debugString = "";
+		
+		c.moveToFirst();
+		while (!c.isAfterLast()) {
+			
+			try {
+				Integer i = c.getColumnCount();
+			
+				for (int indx = 0; indx < i; indx++) {
+					debugString += " | " + c.getString(indx);
+				}
+				debugString += "\n";
+				c.moveToNext();
+			} catch (IllegalStateException e) {
+				c.moveToNext();
+				
+			}
+			
+		}
+		c.close();
+		return debugString;
+		
+	}
 
 	public User[] fetchAll() {
 		SQLiteDatabase sq = getReadableDatabase(); 

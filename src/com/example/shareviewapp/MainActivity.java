@@ -1,12 +1,18 @@
 package com.example.shareviewapp;
 
+
+
 import com.example.shareviewapp.UsersMapper;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteStatement;
 import android.view.Menu;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
@@ -25,6 +31,16 @@ public class MainActivity extends Activity {
         getMenuInflater().inflate(R.menu.activity_main, menu);
         return true;
     }
+    
+    public void loginUser(View view) {
+    	
+    	TextView textView = (TextView) findViewById(R.id.debug);
+		String name = textView.getText().toString();
+		
+		textView.setText("Logging in...");
+		//textView.setText(getUsersMapper().debugDescribe());
+    		
+	}
     
 	private UsersMapper getUsersMapper() {
 		// TODO Auto-generated method stub
