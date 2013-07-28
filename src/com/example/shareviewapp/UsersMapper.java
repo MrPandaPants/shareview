@@ -48,6 +48,24 @@ public class UsersMapper extends SQLiteOpenHelper {
 		cs.close();
 	}
 	
+	public User findByUsername(String username) {
+		
+		User[] users = this.fetchAll();
+		
+		User u = null;
+		
+		for(int i = 0; i < users.length; i++) {
+			
+			u = users[i];
+			
+			if (u.getName() == username) {
+				return u;
+			}
+		}
+		return u;
+	}
+	
+	
 	public void createDBFirst() {
 		SQLiteDatabase sq = getWritableDatabase();
 		SQLiteStatement cs = sq.compileStatement(USERS_TABLE_CREATE);
@@ -56,7 +74,7 @@ public class UsersMapper extends SQLiteOpenHelper {
 		cs.close();
 	}
 	
-	public int createPassword(String name, String value) {
+	public int createUser(String name, String value) {
 		SQLiteDatabase sq = getWritableDatabase();
 		SQLiteStatement cs = sq.compileStatement("insert into users values (null, ?, ?);");
 		
@@ -142,7 +160,7 @@ public class UsersMapper extends SQLiteOpenHelper {
 		LinkedList<User> lstr = new LinkedList<User>();
 		
 		c.moveToFirst();
-		while (!c.isLast()) {
+		while (!c.isAfterLast()) {
 			 
 			lstr.add(new User(Integer.parseInt(c.getString(0)),
 					c.getString(1), c.getString(2)));

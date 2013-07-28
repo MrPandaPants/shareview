@@ -44,11 +44,17 @@ public class MainActivity extends Activity {
     public void loginUser(View view) {
     	
     	TextView textView = (TextView) findViewById(R.id.debug);
-		String name = textView.getText().toString();
 		
-		textView.setText("Logging in...");
-		//textView.setText(getUsersMapper().debugDescribe());
-    		
+		
+    	UsersMapper um = getUsersMapper();
+    	User[] users = um.fetchAll();
+    	
+    	String s = "";
+    	for(int i = 0; i < users.length; i++) {
+    		s += users[i].getName();
+    	}
+    	
+    	textView.setText(s);
 	}
     
 	private UsersMapper getUsersMapper() {

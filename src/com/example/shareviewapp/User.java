@@ -3,6 +3,8 @@ package com.example.shareviewapp;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import android.content.Context;
+
 /**
  * 
  * @author MrPandaPants
@@ -18,6 +20,16 @@ public class User {
 		this.setId(Id);
 		this.setName(name);
 		this.setPassword(password);
+	}
+	
+	public boolean authenticate(UsersMapper usersMapper) {
+		
+		User me = usersMapper.findByUsername((String) this.getName());
+		
+		return me.getPassword() == this.getPassword();
+		
+		
+		
 	}
 	
 	public static CharSequence encryptPassword(String password) {
