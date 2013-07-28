@@ -2,6 +2,7 @@ package com.example.shareviewapp;
 
 
 
+
 import com.example.shareviewapp.UsersMapper;
 
 import android.os.Bundle;
@@ -32,6 +33,14 @@ public class MainActivity extends Activity {
         return true;
     }
     
+    public void gotoRegister(View view) {
+    	Intent intent = new Intent(this, RegisterActivity.class);
+		 
+    	startActivity(intent);
+    	this.onDestroy();
+    	this.finish();	
+    }
+    
     public void loginUser(View view) {
     	
     	TextView textView = (TextView) findViewById(R.id.debug);
@@ -53,4 +62,15 @@ public class MainActivity extends Activity {
 		usersMapper.createDBFirst();
 		
 	}
+	
+	public void close(View view) {
+    	finishActivity(this);
+    	
+    }
+    private void finishActivity(MainActivity mainActivity) {
+		// TODO Auto-generated method stub
+		mainActivity.onDestroy();
+		mainActivity.finish();
+	}
+
 }

@@ -63,7 +63,26 @@
         android:layout_alignRight="@+id/button1"
         android:layout_below="@+id/button1"
         android:layout_marginTop="22dp"
-        android:text="temp debug statements here"
+        android:text="@string/debug_on"
         android:textAppearance="?android:attr/textAppearanceSmall" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/debug"
+        android:layout_toLeftOf="@+id/button1"
+        android:onClick="gotoRegister"
+        android:text="@string/activity_main_signup" />
+
+    <Button
+        android:id="@+id/button3"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:onClick="close"
+        android:text="@string/activity_close" />
 
 </RelativeLayout>
